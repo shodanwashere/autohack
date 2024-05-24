@@ -5,8 +5,8 @@ if [[ $# -eq 0 ]]; then
     exit 1
 fi
 
-if [ "$0" = "--search" ]; then
-    results=$PWD/autohack.results.$1
+if [ "$1" = "--search" ]; then
+    results=$PWD/autohack.results.$2
     read -p "[?] Enter the scanned endpoint: " endpoint
     file=$results/$endpoint.nmap.xml.searchsploit.json
     if [ -f $file ]; then
