@@ -5,6 +5,24 @@ if [[ $# -eq 0 ]]; then
     exit 1
 fi
 
+if [ "$0" = "--search" ]; then
+    results=$PWD/autohack.results.$1
+    read -p "[?] Enter the scanned endpoint: " endpoint
+    file=$results/$endpoint.nmap.xml.searchsploit.json
+    if [ -f $file ]; then
+        if [ -s $file ]; then
+            cat $file | jq '.' | less
+	        exit 0
+        else
+            echo "[X] Endpoint scan returned no results"
+            exit 1
+        fi
+    else
+        echo "[X] Endpoint does not exist in the results"
+        exit 1
+    fi
+fi
+
 if [ `id -u` -ne 0 ]; then
     echo "!!! This script requires root privileges for certain sections !!!"
     echo "Please provide your password below or Ctrl+C to cancel."
