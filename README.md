@@ -10,6 +10,13 @@ $ chmod +x autohack.sh
 $ ./autohack.sh <domain>
 ```
 
+Once you have generated results for the domain being scanned, you can search the results effeciently, by using the `--search` flag:
+```
+$ ./autohack.sh --search <domain>
+[?] Enter the scanned endpoint: <subdomain>
+...
+```
+
 ## Explanation
 The script is very straightforward, and its execution is divided into 3 parts:
 
